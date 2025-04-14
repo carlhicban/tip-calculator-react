@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
 function App() {
+  const [bill, setBill] = useState(0);
+
+  function handleBill() {
+    alert();
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Bill bill={bill} />
+      <Service />
+      <TotalBill bill={bill} />
+      <ResetBill />
+    </>
   );
+}
+
+function Bill({ bill, handleBill }) {
+  return (
+    <>
+      <h3>How much was the bill?</h3>
+      <input type="number" value={bill} onChange={() => handleBill()} />
+    </>
+  );
+}
+
+function Service() {
+  return (
+    <>
+      <h3>How did you like the service?</h3>
+      <input type="number" />
+    </>
+  );
+}
+
+function TotalBill({ bill }) {
+  return <h2>You pay $ (${bill} + $ tip)</h2>;
+}
+
+function ResetBill() {
+  return <button>Reset</button>;
 }
 
 export default App;
