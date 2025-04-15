@@ -3,14 +3,14 @@ import { useState } from "react";
 function App() {
   const [bill, setBill] = useState(0);
 
-  function handleBill() {
-    alert();
+  function handleBill(value) {
+    setBill(() => value);
   }
   return (
     <>
       <Bill bill={bill} />
       <Service />
-      <TotalBill bill={bill} />
+      <TotalBill bill={bill} handleBill={handleBill} />
       <ResetBill />
     </>
   );
@@ -20,7 +20,11 @@ function Bill({ bill, handleBill }) {
   return (
     <>
       <h3>How much was the bill?</h3>
-      <input type="number" value={bill} onChange={() => handleBill()} />
+      <input
+        type="number"
+        value={bill}
+        onChange={(e) => handleBill(e.target.value)}
+      />
     </>
   );
 }
