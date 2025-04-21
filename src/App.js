@@ -8,9 +8,9 @@ function App() {
   }
   return (
     <>
-      <Bill bill={bill} />
+      <Bill bill={bill} handleBill={handleBill} />
       <Service />
-      <TotalBill bill={bill} handleBill={handleBill} />
+      <TotalBill bill={bill} />
       <ResetBill />
     </>
   );
